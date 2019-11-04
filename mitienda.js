@@ -55,4 +55,10 @@ En ${laTienda} encontrarás cosas ricas para la hora del mate y/o merienda.
 
     console.log(respuestaAbonarEnCuotas);
 
+    let dosCuotas = compraTotal / 2;
+    let tresCuotas = compraTotal / 3;
+    let seisCuotas = compraTotal / 6;
+
+    let respuestaCuantasCuotas = prompt(`¿En cuántas cuotas desea abonar?`)
+
     
