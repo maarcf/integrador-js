@@ -34,7 +34,8 @@ En ${laTienda} encontrarás cosas ricas para la hora del mate y/o merienda.
     respuestaBudinLimon === "si" && (cantidadBudinLimon = prompt("¿Cuántos budines deseas comprar?"));
     respuestaBudinLimon === "no" && alert(`No deseas comprar ${budinLimon}`);
     respuestaBudinLimon !== "si" && (cantidadBudinLimon = 0);
-
+    (respuestaBudinChocoBanana !== "si" && respuestaBudinLimon !== "si") && alert("Compra NO realizada")
+    
     console.log(respuestaBudinChocoBanana);
     console.log(cantidadBudinChocoBanana);
     console.log(respuestaBudinLimon);
@@ -43,22 +44,103 @@ En ${laTienda} encontrarás cosas ricas para la hora del mate y/o merienda.
     let sumaCantidadesChocoBanana = cantidadBudinChocoBanana * precioBudinChocoBanana;
     let sumaCantidadesLimon = cantidadBudinLimon * precioBudinLimon;
     let compraTotal = sumaCantidadesChocoBanana + sumaCantidadesLimon;
+    
 
-    let respuestaAbonarEnCuotas = prompt(`¡Excelente elección!
+    let respuestaAbonarEnCredito = prompt(`¡Excelente elección, ${nombreCLiente}!
     Estas por comprar:
     - ${budinChocoBanana}: ${cantidadBudinChocoBanana} x $${precioBudinChocoBanana} por unidad.
     - ${budinLimon}: ${cantidadBudinLimon} x $${precioBudinLimon} por unidad.
     
-    TOTAL: $${compraTotal}
+    TOTAL: $${compraTotal} 
     
-    💳 ¿Deseas abonar en cuotas? 💳`);
+    💳 ¿Deseas abonar con tarjeta de crédito? 💳`);
 
-    console.log(respuestaAbonarEnCuotas);
+    console.log(respuestaAbonarEnCredito);
 
-    let dosCuotas = compraTotal / 2;
-    let tresCuotas = compraTotal / 3;
-    let seisCuotas = compraTotal / 6;
+    let respuestaCuantasCuotas = "";
+    let respuestaCodigoPromocional = "";
+    let respuestaCodigoPromocionalEnCuotas = "";
+     
 
-    let respuestaCuantasCuotas = prompt(`¿En cuántas cuotas desea abonar?`)
+    respuestaAbonarEnCredito === "si" && (respuestaCuantasCuotas = prompt(`¿En cuántas cuotas desea abonar?`));
+
+    respuestaAbonarEnCredito === "no" && (respuestaCodigoPromocional = prompt(`Ya casi estamos, ${nombreCLiente}.
+    🛒 El detalle de la compra es: 
+    - ${budinChocoBanana}: ${cantidadBudinChocoBanana} x $${precioBudinChocoBanana} por unidad.
+    - ${budinLimon}: ${cantidadBudinLimon} x $${precioBudinLimon} por unidad.
+    
+    TOTAL: $${compraTotal} 
+    
+        ¿Contás con un código de descuento? 🏷️`));
+
+    respuestaCuantasCuotas !== ""  && (respuestaCodigoPromocionalEnCuotas = prompt(`Ya casi estamos, ${nombreCLiente}.
+    🛒 El detalle de la compra es: 
+     - ${budinChocoBanana}: ${cantidadBudinChocoBanana} x $${precioBudinChocoBanana} por unidad.
+    - ${budinLimon}: ${cantidadBudinLimon} x $${precioBudinLimon} por unidad.
+        
+    TOTAL: $${compraTotal} 
+        
+    Vas a abonar en ${respuestaCuantasCuotas} cuotas de $${compraTotal / respuestaCuantasCuotas}.
+        
+    ¿Contás con un código de descuento? 🏷️`));
+
+        
+    console.log(respuestaAbonarEnCredito);
+    console.log(respuestaCuantasCuotas);
+
+    let respuestaNombreCodigoPromocional = "";
+    
+    respuestaCodigoPromocional === "si" && (respuestaNombreCodigoPromocional = prompt(`Por favor, ingrese el código`));
+    respuestaCodigoPromocionalEnCuotas === "si" && (respuestaNombreCodigoPromocional = prompt(`Por favor, ingrese el código`));
+
+    respuestaNombreCodigoPromocional === codigoDescuento && alert(`El código ingresado es CORRECTO.`);
+    respuestaNombreCodigoPromocional === codigoDescuento || alert(`El código ingresado es INCORRECTO.`);
+
+    respuestaAbonarEnCredito === "si" && respuestaNombreCodigoPromocional === codigoDescuento && alert(`${nombreCLiente} el detalle FINAL de la compra es: 
+    - ${budinChocoBanana}: ${cantidadBudinChocoBanana} x $${precioBudinChocoBanana} por unidad.
+    - ${budinLimon}: ${cantidadBudinLimon} x $${precioBudinLimon} por unidad.
+    
+    SUBTOTAL: $${compraTotal} 
+    CODIGO DE DESCUENTO: -$${descuento}
+    
+    TOTAL: $${compraTotal - descuento}
+    Vas a abonar en ${respuestaCuantasCuotas} cuotas de $${(compraTotal - descuento) / respuestaCuantasCuotas}`);
+
+    respuestaAbonarEnCredito === "no" && respuestaNombreCodigoPromocional === codigoDescuento && alert(`${nombreCLiente} el detalle FINAL de la compra es: 
+    - ${budinChocoBanana}: ${cantidadBudinChocoBanana} x $${precioBudinChocoBanana} por unidad.
+    - ${budinLimon}: ${cantidadBudinLimon} x $${precioBudinLimon} por unidad.
+    
+    SUBTOTAL: $${compraTotal} 
+    CODIGO DE DESCUENTO: -$${descuento}
+    
+    TOTAL: $${compraTotal - descuento}`);
+
+    respuestaAbonarEnCredito === "si" && respuestaNombreCodigoPromocional !== codigoDescuento && alert(`${nombreCLiente} el detalle FINAL de la compra es: 
+    - ${budinChocoBanana}: ${cantidadBudinChocoBanana} x $${precioBudinChocoBanana} por unidad.
+    - ${budinLimon}: ${cantidadBudinLimon} x $${precioBudinLimon} por unidad.
+    
+    SUBTOTAL: $${compraTotal} 
+    DESCUENTO: No Aplica
+    
+    TOTAL: $${compraTotal}
+    Vas a abonar en ${respuestaCuantasCuotas} cuotas de $${compraTotal / respuestaCuantasCuotas}`);
+
+    respuestaAbonarEnCredito === "no" && respuestaNombreCodigoPromocional !== codigoDescuento && alert(`${nombreCLiente} el detalle FINAL de la compra es: 
+    - ${budinChocoBanana}: ${cantidadBudinChocoBanana} x $${precioBudinChocoBanana} por unidad.
+    - ${budinLimon}: ${cantidadBudinLimon} x $${precioBudinLimon} por unidad.
+    
+    SUBTOTAL: $${compraTotal} 
+    DESCUENTO: No Aplica
+    
+    TOTAL: $${compraTotal}`);
+
+    alert(`¡Gracias por comprar en ${laTienda}, esperamos que disfrute de la comida!` );
+
+    
+
+
+
+
+    
 
     
