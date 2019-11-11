@@ -1,3 +1,7 @@
+// Observaciones generales
+// Excelente trabajo, todas las casuisticas posibles funcionan, bien considerados todos los casos de uso
+// Muy buen uso de variables y nombres. 
+
 const laTienda = `La comida es AM💛R`;
 let budinChocoBanana = `🍫🍌 Budín vegano de chocolate y banana sin gluten`
 let budinLimon = `🍋 Budín vegano de limón sin gluten`
@@ -36,6 +40,8 @@ En ${laTienda} encontrarás cosas ricas para la hora del mate y/o merienda.
     respuestaBudinLimon !== "si" && (cantidadBudinLimon = 0);
     (respuestaBudinChocoBanana !== "si" && respuestaBudinLimon !== "si") && alert("Compra NO realizada")
     
+// No es buena practica dejar console.log en el codigo, ya que corremos riesgo de que un usuario lo vea. 
+// Se usan solo para prueba y luego se borran. 
     console.log(respuestaBudinChocoBanana);
     console.log(cantidadBudinChocoBanana);
     console.log(respuestaBudinLimon);
@@ -63,6 +69,8 @@ En ${laTienda} encontrarás cosas ricas para la hora del mate y/o merienda.
      
 
     respuestaAbonarEnCredito === "si" && (respuestaCuantasCuotas = prompt(`¿En cuántas cuotas desea abonar?`));
+
+// Excelente acay a lo largo de todo el codigo que hayas ido considerando las distintas respuestas posibles del usuario
 
     respuestaAbonarEnCredito === "no" && (respuestaCodigoPromocional = prompt(`Ya casi estamos, ${nombreCLiente}.
     🛒 El detalle de la compra es: 
@@ -93,6 +101,7 @@ En ${laTienda} encontrarás cosas ricas para la hora del mate y/o merienda.
     respuestaCodigoPromocional === "si" && (respuestaNombreCodigoPromocional = prompt(`Por favor, ingrese el código`));
     respuestaCodigoPromocionalEnCuotas === "si" && (respuestaNombreCodigoPromocional = prompt(`Por favor, ingrese el código`));
 
+// excelente esta validacion
     respuestaNombreCodigoPromocional === codigoDescuento && alert(`El código ingresado es CORRECTO.`);
     respuestaNombreCodigoPromocional === codigoDescuento || alert(`El código ingresado es INCORRECTO.`);
 
